@@ -29,7 +29,7 @@ export default class WelcomeScreen extends React.Component{
     userLogin = (emailId, password)=>{
          firebase.auth().signInWithEmailAndPassword(emailId, password) 
          .then(()=>{ 
-             return Alert.alert("Successfully Login") 
+             this.props.navigation.navigate('Donate')
             }) 
          .catch((error)=> 
          { var errorCode = error.code;
@@ -189,7 +189,7 @@ export default class WelcomeScreen extends React.Component{
 
                     <TouchableOpacity style = {styles.button}
                     onPress={()=>{
-                        this.userSignUp(this.state.emailId, this.state.password)
+                        this.setState({isModalVisible:true})
                     }}>
                         <Text style = {styles.buttonText}>Sign Up</Text>
                     </TouchableOpacity>
@@ -297,7 +297,7 @@ cancelButton:{
     height:30, 
     justifyContent:'center', 
     alignItems:'center', 
-    marginTop:5, },
+    marginTop:5, 
+}
 
 })
-
